@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "podgotowka"
 include ':app'
-include ':app:uikit'
+include ':UiKit'
