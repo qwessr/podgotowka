@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <!-- 1. Обычное поле (Email) -->
+        <TextView
+            style="@style/Typography.Matule.Title2.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Default Input"
+            android:layout_marginBottom="8dp"/>
+
+        <include
+            android:id="@+id/input_email"
+            layout="@layout/et_defualt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- 2. Поле пароля -->
+        <TextView
+            style="@style/Typography.Matule.Title2.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Password Input"
+            android:layout_marginBottom="8dp"/>
+
+        <include
+            android:id="@+id/input_password"
+            layout="@layout/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- 3. Поле даты -->
+        <TextView
+            style="@style/Typography.Matule.Title2.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. Date Input"
+            android:layout_marginBottom="8dp"/>
+
+        <include
+            android:id="@+id/input_date"
+            layout="@layout/et_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"/>
+
+    </LinearLayout>
+</ScrollView>

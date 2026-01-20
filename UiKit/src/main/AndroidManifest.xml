@@ -2,11 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <application>
-        <activity
-            android:name="edit_text.MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.Podgotowka" />
+
     </application>
 
 </manifest>
