@@ -1,17 +1,20 @@
 package com.example.uikit.edit_text;
 
-import static java.security.AccessController.getContext;
-
 import android.content.Context;
+import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.uikit.R;
 
-public class EtPassword  extends etDefault{
+public class EtPassword extends CustomEditText {
+
+    ImageView bthPassword;
+
     public EtPassword(@NonNull Context context) {
         super(context);
     }
@@ -25,8 +28,21 @@ public class EtPassword  extends etDefault{
     }
 
     @Override
-    public void init(){
-    super.init();
-        LayoutInflater.from(getContext()).inflate(R.layout.et_password,this,true);
+    public void init(Integer idLayout) {
+        super.init(R.layout.et_password);
+
+        bthPassword = findViewById(R.id.bthPassword);
+        bthPassword.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editText.getTransformationMethod() == null) {
+                    editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    bthPassword.setImageResource(R.drawable.ic_password_hide);
+                } else {
+                    editText.setTransformationMethod(null);
+                    bthPassword.setImageResource(R.drawable.ic_password_show);
+                }
+            }
+        });
     }
 }

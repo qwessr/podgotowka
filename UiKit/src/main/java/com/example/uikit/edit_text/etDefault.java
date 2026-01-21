@@ -13,14 +13,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.uikit.R;
 
-/// КОМПОНЕНТ input (ввод данных)
 public class etDefault extends ConstraintLayout {
 
-    /// Название поля
-    EditText editText;
-    /// Текстовое поле
-    TextView textView;
-    /// флаг для ошибок
+    public EditText editText;
+    public TextView textView;
     private boolean onError = false;
 
     public etDefault(@NonNull Context context) {
@@ -38,45 +34,55 @@ public class etDefault extends ConstraintLayout {
         init();
     }
 
-    /// Инициализация компонента
-    void init() {
+    public void init() {
+        removeAllViews();
         LayoutInflater.from(getContext()).inflate(R.layout.et_defualt, this, true);
         editText = findViewById(R.id.et_edit_text);
         textView = findViewById(R.id.tvTextView);
 
-        editText.setOnFocusChangeListener(FocusListener);
+        if (editText != null) {
+            editText.setOnFocusChangeListener(FocusListener);
+        }
     }
 
-    /// Инициализация компонента, назначение названия поля и hint
     public void init(String title, String hint) {
-        LayoutInflater.from(getContext()).inflate(R.layout.et_defualt,this, true);
+        init(title, hint, "");
     }
 
-    /// Изменение состояния в зависимости от того что находится в текстовом поле
-    private OnFocusChangeListener FocusListener = new OnFocusChangeListener() {
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            setState();
+    public void init(String title, String hint, String text) {
+        if (textView != null) {
+            if (title == null || title.isEmpty()) {
+                textView.setVisibility(View.GONE);
+            } else {
+                textView.setText(title);
+                textView.setVisibility(View.VISIBLE);
+            }
         }
-    };
 
-    public void OnError(boolean state) {
+        if (editText != null) {
+            editText.setHint(hint);
+            editText.setText(text);
+        }
+    }
+
+    private OnFocusChangeListener FocusListener = (v, hasFocus) -> setState();
+
+    public void OnError(boolean state, String errorText) {
+        this.onError = state;
         setState();
-        onError = state;
     }
 
-    private void setState() {
-        if(onError)
+    protected void setState() {
+        if (editText == null) return;
+
+        if (onError) {
             editText.setBackgroundResource(R.drawable.et_state_error);
-        else {
-            if(String.valueOf(editText.getText()).isEmpty())
+        } else {
+            if (String.valueOf(editText.getText()).isEmpty()) {
                 editText.setBackgroundResource(R.drawable.et_stste_defualt);
-            else
+            } else {
                 editText.setBackgroundResource(R.drawable.et_state_filled);
+            }
         }
     }
-
-
 }
-
-
