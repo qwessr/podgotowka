@@ -87,16 +87,14 @@ public class CustomEditText extends ConstraintLayout {
     public void setState() {
         if (onError) {
             editText.setBackgroundResource(R.drawable.et_state_error);
-            errorTextView.setVisibility(VISIBLE);
+            if (errorTextView != null) {
+                errorTextView.setVisibility(VISIBLE);
+            }
         } else {
             if (errorTextView != null) {
                 errorTextView.setVisibility(INVISIBLE);
             }
-            if (String.valueOf(editText.getText()).isEmpty()) {
-                editText.setBackgroundResource(R.drawable.et_stste_defualt);
-            } else {
-                editText.setBackgroundResource(R.drawable.et_state_filled);
-            }
+            editText.setBackgroundResource(R.drawable.et_selector);
         }
     }
 }
