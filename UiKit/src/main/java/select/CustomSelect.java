@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.uikit.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomSelect extends ConstraintLayout {
     TextView textView;
 
@@ -25,12 +29,15 @@ public class CustomSelect extends ConstraintLayout {
 
     public CustomSelect(@NonNull Context context) {
         super(context);
+        init();
     }
     public CustomSelect(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
     public CustomSelect(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
     }
 
     /// Инициализация компонента
@@ -41,14 +48,12 @@ public class CustomSelect extends ConstraintLayout {
         textView= findViewById(R.id.textView);
     }
 
-    public void init(String[] items, String title, String hint, Integer index)
-    {
-        if(title.isEmpty()) textView.setVisibility(View.GONE);
+    public void init(String[] items, String title, String hint, Integer index) {
+        if (title.isEmpty()) textView.setVisibility(View.GONE);
         else {
             textView.setText(title);
             textView.setVisibility(View.VISIBLE);
         }
-
         if(index == null)
         {
             spinner.setText(hint);
@@ -59,9 +64,8 @@ public class CustomSelect extends ConstraintLayout {
             spinner.setText(items[index]);
             spinner.setTextColor(Color.parseColor("#000000"));
         }
-
-        spinner.setOnClickListener(v -> ShowBottomSheet(items));
-     }
+        spinner.setOnClickListener(v->ShowBottomSheet(items));
+    }
 
      public void ShowBottomSheet(String[] items)
      {

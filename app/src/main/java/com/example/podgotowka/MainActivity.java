@@ -8,6 +8,8 @@ import com.example.uikit.edit_text.EtDate;
 import com.example.uikit.edit_text.etDefault;
 import com.example.uikit.edit_text.EtPassword;
 
+import select.CustomSelect;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         EtPassword etPassword = findViewById(R.id.etPassword);
         etPassword.init("", "", "123456789");
 
-        //EtDate etDate = findViewById(R.id.etDate);
-
+        String[] Items = new String[]{"Мужсуой","Женский"};
+        CustomSelect Select=findViewById(R.id.select);
+        Select.init(Items,"Пол","Пол",null);
     }
 }
