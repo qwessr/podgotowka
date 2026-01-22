@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         EtPassword etPassword = findViewById(R.id.etPassword);
         etPassword.init("", "", "123456789");
 
-        // Поле даты
         //EtDate etDate = findViewById(R.id.etDate);
 
     }
