@@ -10,6 +10,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uikit.edit_text.BottomSheet.CustomBottomSheet;
+import com.example.uikit.edit_text.Button.BthBig;
+import com.example.uikit.edit_text.Button.BthCustom;
 import com.example.uikit.edit_text.EtDate;
 import com.example.uikit.edit_text.etDefault;
 import com.example.uikit.edit_text.EtPassword;
@@ -59,5 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 CustomBottomSheet.Show(context, view,"");
             }
         });
+
+        BthBig bthBig = findViewById(R.id.bthBig);
+        bthBig.init("Нажми на меня", BthCustom.TypeButton.TETRIARY);
     }
 }
