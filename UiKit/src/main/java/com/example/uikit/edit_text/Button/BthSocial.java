@@ -30,7 +30,6 @@ public class BthSocial extends BthCustom{
 
 
 
-    @Override
     public void init(Type type) {
         int IdLayout=0;
         if (type == Type.VK) IdLayout = R.layout.bth_vk;

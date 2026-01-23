@@ -16,6 +16,12 @@ import com.example.uikit.R;
 import kotlin.jvm.internal.KTypeBase;
 
 public class BthCustom extends ConstraintLayout {
+    public Button Bth;
+
+    public enum TypeButton{
+        PRIMAPRY, TETRIARY, SECONDARY,OFF,ON
+    }
+
     public BthCustom(@NonNull Context context) {
         super(context);
     }
@@ -28,44 +34,41 @@ public class BthCustom extends ConstraintLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public Button Bth;
 
-    public enum TypeButton{
-        PRIMAPRY, TETRIARY, SECONDARY,OFF,ON
-    }
     public void init(Integer idLayout){
         if (idLayout==null) return;
         LayoutInflater.from(this.getContext()).inflate(idLayout,this,true);
         Bth = findViewById(R.id.bth);
     }
 
-    public  void init(String value ,TypeButton type){
+    public  void init(String value ,TypeButton type) {
         Bth.setText(value);
 
-        if (type==TypeButton.PRIMAPRY||type== TypeButton.ON);
+        if (type == TypeButton.PRIMAPRY || type == TypeButton.ON)
         {
             Bth.setBackgroundResource(R.drawable.bth_primary);
             Bth.setTextColor(Color.parseColor("#ffffff"));
         }
-        if (type==TypeButton.SECONDARY);
+        if (type == TypeButton.SECONDARY)
         {
             Bth.setBackgroundResource(R.drawable.bth_secondary);
             Bth.setTextColor(Color.parseColor("#1a6fee"));
         }
-        if (type==TypeButton.TETRIARY);
+        if (type == TypeButton.TETRIARY)
         {
             Bth.setBackgroundResource(R.drawable.bth_tetriary);
             Bth.setTextColor(Color.parseColor("#2d2c2c"));
         }
-        if (type==TypeButton.OFF);
+        if (type == TypeButton.OFF)
         {
             Bth.setBackgroundResource(R.drawable.bth_tetriary);
             Bth.setTextColor(Color.parseColor("#7e7e9a"));
+            this.setEnabled(false);
         }
     }
 
-    @Override
-    public void SetEnabled(boolean enabled)
+
+    public void setEnabled(boolean enabled)
     {
         super.setEnabled(enabled);
         Bth.setEnabled(enabled);
