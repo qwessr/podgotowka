@@ -1,9 +1,9 @@
 package com.example.uikit.edit_text.BottomSheet;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +19,7 @@ public class CustomBottomSheet {
         View view = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_default, null);
 
         TextView tvTitle = view.findViewById(R.id.tvTitle);
-        ImageView   bthClose = view.findViewById(R.id.bthClose);
+        ImageView bthClose = view.findViewById(R.id.bthClose);
         FrameLayout frame = view.findViewById(R.id.frame);
 
         bthClose.setOnClickListener(new View.OnClickListener() {
@@ -29,7 +29,7 @@ public class CustomBottomSheet {
             }
         });
 
-        if (tittle.isEmpty())
+        if (tittle == null || tittle.isEmpty())
         {
             tvTitle.setVisibility(View.GONE);
             bthClose.setVisibility(View.GONE);
@@ -40,8 +40,9 @@ public class CustomBottomSheet {
             bthClose.setVisibility(View.VISIBLE);
         }
 
-
-
+        if (custom_view.getParent() != null) {
+            ((ViewGroup)custom_view.getParent()).removeView(custom_view);
+        }
         frame.addView(custom_view);
 
         Dialog.setContentView(view);

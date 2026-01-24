@@ -21,13 +21,12 @@ import com.example.uikit.edit_text.Button.BthSmall;
 import com.example.uikit.edit_text.Button.BthSocial;
 import com.example.uikit.edit_text.EtDate;
 import com.example.uikit.edit_text.EtPassword;
-import com.example.uikit.edit_text.etDefault;
+import com.example.uikit.edit_text.etDefault; // Убедитесь, что класс называется именно так (с маленькой буквы)
 import com.example.uikit.edit_text.header.Header;
 import com.example.uikit.edit_text.search.EtSearch;
-import com.example.uikit.edit_text.tabbar.TabBarAdapter;
 import com.example.uikit.edit_text.tabbar.TabBarCustom;
 
-import select.CustomSelect;
+import select.CustomSelect; // Проверьте, что этот пакет существует
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,87 +38,106 @@ public class MainActivity extends AppCompatActivity {
 
         /// Поиск
         EtSearch etSearch = findViewById(R.id.etSearch);
-        etSearch.init(0); /// Инициализация лейаута
+        if (etSearch != null) etSearch.init(0);
 
         /// Обычное пустое поле
         etDefault etDefault = findViewById(R.id.etDefault);
-        etDefault.init("", "Введите имя", "");
+        if (etDefault != null) etDefault.init("", "Введите имя", "");
 
         /// Предзаполненное поле
         etDefault etFilled = findViewById(R.id.etFilled);
-        etFilled.init("", "Введите имя", "Иван");
+        if (etFilled != null) etFilled.init("", "Введите имя", "Иван");
 
         /// Поле с заголовком (Title)
         etDefault etDescription = findViewById(R.id.etDescription);
-        etDescription.init("Имя", "Введите имя", "Иван");
+        if (etDescription != null) etDescription.init("Имя", "Введите имя", "Иван");
 
         /// Поле с ошибкой
         etDefault etError = findViewById(R.id.etError);
-        etError.init("Имя", "Имя", "");
-        etError.OnError(true, "Ошибка валидации");
+        if (etError != null) {
+            etError.init("Имя", "Имя", "");
+            etError.OnError(true, "Ошибка валидации");
+        }
 
         /// Поле пароля
         EtPassword etPassword = findViewById(R.id.etPassword);
-        etPassword.init(0); /// Инициализация лейаута
-        etPassword.init("", "", "123456789");
+        if (etPassword != null) {
+            etPassword.init(0);
+            etPassword.init("", "", "123456789");
+        }
 
         /// Поле даты
         EtDate etDate = findViewById(R.id.etDate);
-        etDate.init(0); // Инициализация лейаута
-        etDate.init("Дата рождения", "ДД.ММ.ГГГГ", "");
+        if (etDate != null) {
+            etDate.init(0);
+            etDate.init("Дата рождения", "ДД.ММ.ГГГГ", "");
+        }
 
         /// SELECT
         String[] Items = new String[]{"Мужской", "Женский"};
         CustomSelect select = findViewById(R.id.select);
-        select.init(Items, "Пол", "Выберите пол", null);
+        if (select != null) {
+            select.init(Items, "Пол", "Выберите пол", null);
+        }
 
         /// BOTTOM SHEET
         Button bthSheetDialogPreview = findViewById(R.id.bthShowDialog);
         Context context = this;
-        bthSheetDialogPreview.setOnClickListener(view -> {
-            View view1 = LayoutInflater.from(context).inflate(com.example.uikit.R.layout.et_defualt, null);
-            CustomBottomSheet.Show(context, view1, "Заголовок шторки");
-        });
+        if (bthSheetDialogPreview != null) {
+            bthSheetDialogPreview.setOnClickListener(view -> {
+                // Используем правильный Layout Inflater
+                View view1 = LayoutInflater.from(context).inflate(com.example.uikit.R.layout.et_defualt, null);
+                CustomBottomSheet.Show(context, view1, "Заголовок шторки");
+            });
+        }
 
         /// BUTTONS
 
         /// 1. Big Button
         BthBig bthBig = findViewById(R.id.bthBig);
-        bthBig.init(0);
-        bthBig.init("Главная кнопка", BthCustom.TypeButton.PRIMAPRY);
-        bthBig.setOnClickListener(v -> Toast.makeText(context, "Big Button Click", Toast.LENGTH_SHORT).show());
+        if (bthBig != null) {
+            bthBig.init(0);
+            bthBig.init("Главная кнопка", BthCustom.TypeButton.PRIMAPRY);
+            bthBig.setOnClickListener(v -> Toast.makeText(context, "Big Button Click", Toast.LENGTH_SHORT).show());
+        }
 
         /// 2. Small Button
         BthSmall bthSmall = findViewById(R.id.bthSmall);
-        bthSmall.init(0);
-        bthSmall.init("Small", BthCustom.TypeButton.SECONDARY);
+        if (bthSmall != null) {
+            bthSmall.init(0);
+            bthSmall.init("Small", BthCustom.TypeButton.SECONDARY);
+        }
 
         /// 3. Chips
         BthChips bthChips = findViewById(R.id.bthChips);
-        bthChips.init(0);
-        bthChips.init("Chips", BthCustom.TypeButton.ON);
+        if (bthChips != null) {
+            bthChips.init(0);
+            bthChips.init("Chips", BthCustom.TypeButton.ON);
+        }
 
         /// 4. Card Button (Кнопка с ценой)
         BthCard bthCard = findViewById(R.id.bthCard);
-        bthCard.init(0);
-        bthCard.init("В корзину", BthCustom.TypeButton.PRIMAPRY);
-        bthCard.onCost(1250.0);
+        if (bthCard != null) {
+            bthCard.init(0);
+            bthCard.init("В корзину", BthCustom.TypeButton.PRIMAPRY);
+            bthCard.onCost(1250.0);
+        }
 
         /// 5. Social Buttons
         BthSocial bthVk = findViewById(R.id.bthVk);
-        bthVk.init(BthSocial.Type.VK);
+        if (bthVk != null) bthVk.init(BthSocial.Type.VK);
 
         BthSocial bthYandex = findViewById(R.id.bthYandex);
-        bthYandex.init(BthSocial.Type.YANDEX);
+        if (bthYandex != null) bthYandex.init(BthSocial.Type.YANDEX);
 
         BthBubbleBack bthBack = findViewById(R.id.bthBack);
-        bthBack.init(0);
+        if (bthBack != null) bthBack.init(0);
 
         BthBubbleFilter bthFilter = findViewById(R.id.bthFilter);
-        bthFilter.init(0);
+        if (bthFilter != null) bthFilter.init(0);
 
         TabBarCustom tabBar = findViewById(R.id.tabBar);
-        if (tabBar.Adapter != null) {
+        if (tabBar != null && tabBar.Adapter != null) {
             tabBar.Adapter.Listner = position -> {
                 Log.e("TabBar", "Clicked position: " + position);
                 Toast.makeText(context, "Tab selected: " + position, Toast.LENGTH_SHORT).show();
@@ -127,15 +145,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Header header = findViewById(R.id.header);
-        header.init(
-                Header.Type.BIG,
-                com.example.uikit.R.drawable.ic_bubble_back,
-                        com.example.uikit.R.drawable.ic_trash,
-                "Заголовок");
-        header.BthLeft.setOnClickListener(v ->
-        {
-            Log.e("Notify","Click Back Button");
-        });
+        if (header != null) {
+            header.init(
+                    Header.Type.BIG,
+                    com.example.uikit.R.drawable.ic_bubble_back,
+                    com.example.uikit.R.drawable.ic_trash,
+                    "Заголовок");
 
+            // Важная проверка на null, так как BthLeft может не существовать
+            if (header.BthLeft != null) {
+                header.BthLeft.setOnClickListener(v -> {
+                    Log.e("Notify", "Click Back Button");
+                });
+            }
+        }
     }
 }
