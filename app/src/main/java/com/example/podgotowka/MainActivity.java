@@ -22,6 +22,7 @@ import com.example.uikit.edit_text.Button.BthSocial;
 import com.example.uikit.edit_text.EtDate;
 import com.example.uikit.edit_text.EtPassword;
 import com.example.uikit.edit_text.etDefault;
+import com.example.uikit.edit_text.header.Header;
 import com.example.uikit.edit_text.search.EtSearch;
 import com.example.uikit.edit_text.tabbar.TabBarAdapter;
 import com.example.uikit.edit_text.tabbar.TabBarCustom;
@@ -124,5 +125,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(context, "Tab selected: " + position, Toast.LENGTH_SHORT).show();
             };
         }
+
+        Header header = findViewById(R.id.header);
+        header.init(
+                Header.Type.BIG,
+                com.example.uikit.R.drawable.ic_bubble_back,
+                        com.example.uikit.R.drawable.ic_trash,
+                "Заголовок");
+        header.BthLeft.setOnClickListener(v ->
+        {
+            Log.e("Notify","Click Back Button");
+        });
+
     }
 }
