@@ -1,5 +1,9 @@
 package com.example.networkmodule.user;
 
+import com.example.networkmodule.common.CheckInternet;
+import com.example.networkmodule.common.MyAsynckTask;
+import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.models.User;
 import com.example.uikit.edit_text.common.MyAsynckTask;
 
 import java.io.IOException;

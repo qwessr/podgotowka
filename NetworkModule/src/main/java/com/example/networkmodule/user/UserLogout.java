@@ -1,5 +1,8 @@
 package com.example.networkmodule.user;
 
+import com.example.networkmodule.common.CheckInternet;
+import com.example.networkmodule.common.MyAsynckTask;
+import com.example.networkmodule.common.MyResponseCallback;
 import com.example.uikit.edit_text.common.MyAsynckTask;
 
 import java.io.IOException;
@@ -8,7 +11,7 @@ import java.util.Map;
 
 public class UserLogout extends MyAsynckTask {
     String token;
-    public UserLogout(String token,CheckInternet checkInternet, MyResponseCallback callback) {
+    public UserLogout(String token, CheckInternet checkInternet, MyResponseCallback callback) {
         super(checkInternet, callback);
 
         this.token = token;
