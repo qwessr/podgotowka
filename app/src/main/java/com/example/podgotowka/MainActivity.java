@@ -21,12 +21,12 @@ import com.example.uikit.edit_text.Button.BthSmall;
 import com.example.uikit.edit_text.Button.BthSocial;
 import com.example.uikit.edit_text.EtDate;
 import com.example.uikit.edit_text.EtPassword;
-import com.example.uikit.edit_text.etDefault; // Убедитесь, что класс называется именно так (с маленькой буквы)
+import com.example.uikit.edit_text.etDefault;
 import com.example.uikit.edit_text.header.Header;
 import com.example.uikit.edit_text.search.EtSearch;
 import com.example.uikit.edit_text.tabbar.TabBarCustom;
 
-import select.CustomSelect; // Проверьте, что этот пакет существует
+import select.CustomSelect;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+                
 
         /// Поиск
         EtSearch etSearch = findViewById(R.id.etSearch);
@@ -85,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         Context context = this;
         if (bthSheetDialogPreview != null) {
             bthSheetDialogPreview.setOnClickListener(view -> {
-                // Используем правильный Layout Inflater
                 View view1 = LayoutInflater.from(context).inflate(com.example.uikit.R.layout.et_defualt, null);
                 CustomBottomSheet.Show(context, view1, "Заголовок шторки");
             });
@@ -152,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
                     com.example.uikit.R.drawable.ic_trash,
                     "Заголовок");
 
-            // Важная проверка на null, так как BthLeft может не существовать
             if (header.BthLeft != null) {
                 header.BthLeft.setOnClickListener(v -> {
                     Log.e("Notify", "Click Back Button");
