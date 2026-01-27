@@ -1,6 +1,13 @@
 package com.example.networkmodule.basket;
 
+import com.example.networkmodule.common.CheckInternet;
+import com.example.networkmodule.common.MyAsynckTask;
+import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.common.Settings;
 import com.example.uikit.edit_text.common.MyAsynckTask;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,7 +17,7 @@ public class BasketUpdate extends MyAsynckTask {
    public Integer idProduct, count;
    public String token;
 
-    public BasketUpdate(Integer idProduct,Integer count,String token, CheckInternet checkInternet, MyResponseCallback callback) {
+    public BasketUpdate(Integer idProduct, Integer count, String token, CheckInternet checkInternet, MyResponseCallback callback) {
         super(checkInternet, callback);
 
         this.idProduct = idProduct;
@@ -30,11 +37,11 @@ public class BasketUpdate extends MyAsynckTask {
 
         try {
             Connection.Response response = Jsoup.connect(Settings.Url + "basket/update")
-                    .ignoreConnectType(true)
-                    .ignoreHttpsErrors(true)
+                    .ignoreContentType(true)
+                    .ignoreHttpErrors(true)
                     .method(Connection.Method.PUT)
                     .header("token", token)
-                    .date(params)
+                    .data(params)
                     .execute();
 
             if (response.statusCode() == 200)

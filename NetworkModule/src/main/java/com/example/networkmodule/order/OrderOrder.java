@@ -1,6 +1,12 @@
 package com.example.networkmodule.order;
 
-import com.example.uikit.edit_text.common.MyAsynckTask;
+import com.example.networkmodule.common.CheckInternet;
+import com.example.networkmodule.common.MyAsynckTask;
+import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.common.Settings;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
 
@@ -21,8 +27,8 @@ public class OrderOrder extends MyAsynckTask {
 
         try {
             Connection.Response response = Jsoup.connect(Settings.Url + "order/order")
-                    .ignoreConnectType(true)
-                    .ignoreHttpsErrors(true)
+                    .ignoreContentType(true)
+                    .ignoreHttpErrors(true)
                     .method(Connection.Method.POST)
                     .header("token", token)
                     .execute();

@@ -1,6 +1,13 @@
 package com.example.networkmodule.project;
 
-import com.example.uikit.edit_text.common.MyAsynckTask;
+
+import com.example.networkmodule.common.CheckInternet;
+import com.example.networkmodule.common.MyAsynckTask;
+import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.common.Settings;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
 
@@ -21,8 +28,8 @@ public class ProjectGet extends MyAsynckTask {
 
         try {
             Connection.Response response = Jsoup.connect(Settings.Url + "project/get")
-                    .ignoreConnectType(true)
-                    .ignoreHttpsErrors(true)
+                    .ignoreContentType(true)
+                    .ignoreHttpErrors(true)
                     .method(Connection.Method.GET)
                     .header("token", token)
                     .execute();

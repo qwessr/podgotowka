@@ -3,11 +3,13 @@ package com.example.networkmodule.user;
 import com.example.networkmodule.common.CheckInternet;
 import com.example.networkmodule.common.MyAsynckTask;
 import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.common.Settings;
 import com.example.networkmodule.models.User;
-import com.example.uikit.edit_text.common.MyAsynckTask;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,10 +39,10 @@ public class UserCreate extends MyAsynckTask {
 
         try {
             Connection.Response response = Jsoup.connect(Settings.Url + "user/create")
-                    .ignoreConnectType(true)
-                    .ignoreHttpsErrors(true)
+                    .ignoreContentType(true)
+                    .ignoreHttpErrors(true)
                     .method(Connection.Method.POST)
-                    .date(params)
+                    .data(params)
                     .execute();
 
             if (response.statusCode() == 200)

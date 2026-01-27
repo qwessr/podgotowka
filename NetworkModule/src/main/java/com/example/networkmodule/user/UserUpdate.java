@@ -3,12 +3,16 @@ package com.example.networkmodule.user;
 import com.example.networkmodule.common.CheckInternet;
 import com.example.networkmodule.common.MyAsynckTask;
 import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.common.Settings;
 import com.example.networkmodule.models.User;
 
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class UserUpdate extends MyAsynckTask {
 
@@ -38,8 +42,8 @@ public class UserUpdate extends MyAsynckTask {
 
         try {
             Connection.Response response = Jsoup.connect(Settings.Url + "user/logout")
-                    .ignoreConnectType(true)
-                    .ignoreHttpsErrors(true)
+                    .ignoreContentType(true)
+                    .ignoreHttpErrors(true)
                     .method(Connection.Method.PUT)
                     .header("token", token)
                     .data(params)

@@ -4,11 +4,15 @@ import android.os.AsyncTask;
 
 import com.example.networkmodule.common.CheckInternet;
 import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.common.Settings;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Login extends AsyncTask<Void,Void,String> {
     String email,password;
@@ -35,10 +39,10 @@ public class Login extends AsyncTask<Void,Void,String> {
 
         try {
             Connection.Response response = Jsoup.connect(Settings.Url + "user/login")
-                    .ignoreConnectType(true)
-                    .ignoreHttpsErrors(true)
+                    .ignoreContentType(true)
+                    .ignoreHttpErrors(true)
                     .method(Connection.Method.POST)
-                    .date(params)
+                    .data(params)
                     .execute();
 
             if (response.statusCode() == 200)

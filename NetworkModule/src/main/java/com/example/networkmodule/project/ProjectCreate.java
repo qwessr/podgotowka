@@ -1,11 +1,18 @@
 package com.example.networkmodule.project;
 
-import com.example.uikit.edit_text.common.MyAsynckTask;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import com.example.uikit.edit_text.models.Project;
+
+import com.example.networkmodule.common.CheckInternet;
+import com.example.networkmodule.common.MyAsynckTask;
+import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.common.Settings;
+import com.example.networkmodule.models.Project;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
 
 public class ProjectCreate extends MyAsynckTask {
     String token;
@@ -32,8 +39,8 @@ public class ProjectCreate extends MyAsynckTask {
         params.put("IdCategory", project.idCategory.toString());
         try {
             Connection.Response response = Jsoup.connect(Settings.Url + "project/create")
-                    .ignoreConnectType(true)
-                    .ignoreHttpsErrors(true)
+                    .ignoreContentType(true)
+                    .ignoreHttpErrors(true)
                     .method(Connection.Method.POST)
                     .header("token", token)
                     .data(params)

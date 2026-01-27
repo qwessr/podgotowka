@@ -1,9 +1,16 @@
 package com.example.networkmodule.stock;
 
-import com.example.uikit.edit_text.common.MyAsynckTask;
+
+import com.example.networkmodule.common.CheckInternet;
+import com.example.networkmodule.common.MyAsynckTask;
+import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.common.Settings;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
-import java.sql.Connection;
+
 
 public class StockGet extends MyAsynckTask {
     public StockGet(CheckInternet checkInternet, MyResponseCallback callback) {
@@ -18,8 +25,8 @@ public class StockGet extends MyAsynckTask {
 
         try {
             Connection.Response response = Jsoup.connect(Settings.Url + "user/get")
-                    .ignoreConnectType(true)
-                    .ignoreHttpsErrors(true)
+                    .ignoreContentType(true)
+                    .ignoreHttpErrors(true)
                     .method(Connection.Method.GET)
                     .execute();
 
