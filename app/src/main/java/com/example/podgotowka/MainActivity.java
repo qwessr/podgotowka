@@ -9,7 +9,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 
+import com.example.networkmodule.common.CheckInternet;
+import com.example.networkmodule.common.MyResponseCallback;
+import com.example.networkmodule.user.UserLogin;
 import com.example.uikit.edit_text.BottomSheet.CustomBottomSheet;
 import com.example.uikit.edit_text.Button.BthBig;
 import com.example.uikit.edit_text.Button.BthBubbleBack;
@@ -32,10 +36,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-                
+        CheckInternet checkInternet = new CheckInternet(this);
+
+        UserLogin Login = new UserLogin(
+                "test@test.ru",
+                "Asdfg123",
+                checkInternet,
+                new MyResponseCallback() {
+                    @Override
+                    public void onConpile(String result) {
+                        Log.d("LOGIN", "onConpile: " + result);
+                    }
+
+                    @Override
+                    public void onError(String errror) {
+                        Log.e("LOGIN", "onError: " + errror );
+                    }
+                }
+        );
+        Login.execute();
 
         /// Поиск
         EtSearch etSearch = findViewById(R.id.etSearch);

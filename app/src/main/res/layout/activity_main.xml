@@ -18,13 +18,12 @@
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="48dp"
             android:clipToPadding="false"
             android:paddingBottom="80dp"
             app:layout_constraintBottom_toTopOf="@+id/tabBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/header">
 
                 <LinearLayout
                     android:layout_width="match_parent"
