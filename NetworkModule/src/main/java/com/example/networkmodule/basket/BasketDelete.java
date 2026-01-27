@@ -4,7 +4,6 @@ import com.example.networkmodule.common.CheckInternet;
 import com.example.networkmodule.common.MyAsynckTask;
 import com.example.networkmodule.common.MyResponseCallback;
 import com.example.networkmodule.common.Settings;
-import com.example.uikit.edit_text.common.MyAsynckTask;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

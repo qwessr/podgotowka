@@ -32,7 +32,7 @@ public class BasketCreate extends MyAsynckTask {
         params.put("idProduct", this.idProduct.toString());
 
         try {
-            Connection.Response response = Jsoup.connect(Settings.Url + "baslet/create")
+            Connection.Response response = Jsoup.connect(Settings.Url + "basket/create")
                     .ignoreContentType(true)
                     .ignoreHttpErrors(true)
                     .method(Connection.Method.POST)

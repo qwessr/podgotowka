@@ -12,6 +12,7 @@ import org.jsoup.Jsoup;
 import java.io.IOException;
 
 public class ProductGet extends MyAsynckTask {
+    String token;
     public ProductGet(CheckInternet checkInternet, MyResponseCallback callback) {
         super(checkInternet, callback);
     }
