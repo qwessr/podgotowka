@@ -1,6 +1,8 @@
 package com.example.podgotowka;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -61,6 +63,33 @@ public class AuthorizationActivity extends AppCompatActivity {
         if (bthYandex != null) {
             bthYandex.init(BthSocial.Type.YANDEX);
         }
+
+        bthBig.setEnabled(false);
+
+
+        TextWatcher watcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                boolean isEmailNotEmpty =
+                        etDefault1.editText != null &&
+                                !etDefault1.editText.getText().toString().trim().isEmpty();
+
+                boolean isPasswordNotEmpty =
+                        etPassword.editText != null &&
+                                !etPassword.editText.getText().toString().trim().isEmpty();
+
+                bthBig.setEnabled(isEmailNotEmpty && isPasswordNotEmpty);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        };
+
+        etDefault1.editText.addTextChangedListener(watcher);
+        etPassword.editText.addTextChangedListener(watcher);
 
 
 

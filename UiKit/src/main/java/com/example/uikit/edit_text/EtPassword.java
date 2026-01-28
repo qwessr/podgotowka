@@ -23,20 +23,20 @@ public class EtPassword extends ConstraintLayout {
 
     public EtPassword(@NonNull Context context) {
         super(context);
-        setupUI();
+        init();
     }
 
     public EtPassword(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        setupUI();
+        init();
     }
 
     public EtPassword(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setupUI();
+        init();
     }
 
-    private void setupUI() {
+    private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.et_password, this, true);
         editText = findViewById(R.id.et_edit_text);
         textView = findViewById(R.id.textView);
