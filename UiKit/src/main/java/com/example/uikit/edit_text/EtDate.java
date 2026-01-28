@@ -20,6 +20,7 @@ public class EtDate extends CustomEditText {
     }
     public EtDate(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
     }
     public EtDate(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);

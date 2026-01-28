@@ -73,11 +73,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp" />
 
-                        <select.CustomSelect
-                            android:id="@+id/select"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="24dp" />
+                                <select.CustomSelect
+                                    android:id="@+id/select"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    tools:layout_editor_absoluteX="5dp"
+                                    tools:layout_editor_absoluteY="19dp" />
+
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/bthShowDialog"

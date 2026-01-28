@@ -2,6 +2,7 @@ package select;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,10 @@ public class CustomSelect extends ConstraintLayout {
      public void ShowBottomSheet(String[] items)
      {
          BottomSheetDialog Dialog = new BottomSheetDialog(this.getContext());
+
+         if (Dialog.getWindow() != null) {
+             Dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+         }
          View ViewSelectBottomSheet= LayoutInflater.from(this.getContext()).inflate
                  (R.layout.select_bottom_sheet,null);
          RecyclerView recyclerView=ViewSelectBottomSheet.findViewById(R.id.recyleView);

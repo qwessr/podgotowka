@@ -38,28 +38,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_authorization);
 
-        CheckInternet checkInternet = new CheckInternet(this);
-
-        UserLogin Login = new UserLogin(
-                "test@test.ru",
-                "Asdfg123",
-                checkInternet,
-                new MyResponseCallback() {
-                    @Override
-                    public void onConpile(String result) {
-                        Log.d("LOGIN", "onConpile: " + result);
-                    }
-
-                    @Override
-                    public void onError(String errror) {
-                        Log.e("LOGIN", "onError: " + errror );
-                    }
-                }
-        );
-        Login.execute();
-
+//        CheckInternet checkInternet = new CheckInternet(this);
+//
+//        UserLogin Login = new UserLogin(
+//                "test@test.ru",
+//                "Asdfg123",
+//                checkInternet,
+//                new MyResponseCallback() {
+//                    @Override
+//                    public void onConpile(String result) {
+//                        Log.d("LOGIN", "onConpile: " + result);
+//                    }
+//
+//                    @Override
+//                    public void onError(String errror) {
+//                        Log.e("LOGIN", "onError: " + errror );
+//                    }
+//                }
+//        );
+//        Login.execute();
+//
         /// Поиск
         EtSearch etSearch = findViewById(R.id.etSearch);
         if (etSearch != null) etSearch.init(0);
@@ -86,14 +86,12 @@ public class MainActivity extends AppCompatActivity {
         /// Поле пароля
         EtPassword etPassword = findViewById(R.id.etPassword);
         if (etPassword != null) {
-            etPassword.init(0);
             etPassword.init("", "", "123456789");
         }
 
         /// Поле даты
         EtDate etDate = findViewById(R.id.etDate);
         if (etDate != null) {
-            etDate.init(0);
             etDate.init("Дата рождения", "ДД.ММ.ГГГГ", "");
         }
 

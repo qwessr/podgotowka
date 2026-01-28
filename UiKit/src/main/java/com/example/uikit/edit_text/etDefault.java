@@ -21,21 +21,20 @@ public class etDefault extends ConstraintLayout {
 
     public etDefault(@NonNull Context context) {
         super(context);
-        init();
+        setupUI();
     }
 
     public etDefault(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        setupUI();
     }
 
     public etDefault(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        setupUI();
     }
 
-    public void init() {
-        removeAllViews();
+    private void setupUI() {
         LayoutInflater.from(getContext()).inflate(R.layout.et_defualt, this, true);
         editText = findViewById(R.id.et_edit_text);
         textView = findViewById(R.id.tvTextView);
@@ -43,10 +42,6 @@ public class etDefault extends ConstraintLayout {
         if (editText != null) {
             editText.setOnFocusChangeListener(FocusListener);
         }
-    }
-
-    public void init(String title, String hint) {
-        init(title, hint, "");
     }
 
     public void init(String title, String hint, String text) {
@@ -63,6 +58,10 @@ public class etDefault extends ConstraintLayout {
             editText.setHint(hint);
             editText.setText(text);
         }
+    }
+
+    public void init(String title, String hint) {
+        init(title, hint, "");
     }
 
     private OnFocusChangeListener FocusListener = (v, hasFocus) -> setState();
