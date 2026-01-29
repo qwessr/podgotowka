@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomSelect extends ConstraintLayout {
-    TextView textView;
+    public TextView textView;
 
     TextView spinner;
 

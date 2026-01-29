@@ -1,9 +1,11 @@
 package com.example.podgotowka;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -93,5 +95,10 @@ public class AuthorizationActivity extends AppCompatActivity {
 
 
 
+
+    }
+    public void onRegistration(View view) {
+        Intent intent = new Intent(this, RegistrationProfile.class);
+        startActivity(intent);
     }
 }
