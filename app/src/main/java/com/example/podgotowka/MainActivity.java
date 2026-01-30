@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authorization);
+        setContentView(R.layout.activity_main);
 
 //        CheckInternet checkInternet = new CheckInternet(this);
 //

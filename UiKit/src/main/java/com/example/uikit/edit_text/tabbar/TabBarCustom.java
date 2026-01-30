@@ -52,4 +52,18 @@ public class TabBarCustom extends ConstraintLayout {
         RecyclerView.setAdapter(Adapter);
 
     }
+    public void setOnTabSelected(OnTabSelected listener) {
+        if (Adapter == null) return;
+
+        Adapter.Listner = listener::onSelect;
+    }
+
+    public interface OnTabSelected {
+        void onSelect(int position);
+    }
+    public void setActiveTab(int position) {
+        if (Adapter == null) return;
+        Adapter.setActive(position);
+    }
+
 }

@@ -28,6 +28,21 @@ public class EtSearch extends CustomEditText {
         super(context, attrs, defStyleAttr);
     }
 
+    /// Инициализация компонента, назначение названия поля и hint
+    public void init2(String title,String hint, String text) {
+
+        if (title.isEmpty()) {
+            textView.setVisibility(View.GONE);
+        } else {
+            textView.setText(title);
+            textView.setVisibility(View.VISIBLE);
+        }
+
+        editText.setHint(hint);
+        editText.setText(text);
+
+    }
+
     @Override
     public void init (Integer idLayout)
     {
@@ -60,5 +75,6 @@ public class EtSearch extends CustomEditText {
                 return false;
             }
         });
+
     }
 }

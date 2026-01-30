@@ -1,5 +1,6 @@
 package toggle;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ public class Toggle extends FrameLayout {
     private View thumb;
     private float maxTranslationX = 0f;
     private boolean isInitialized = false;
+    private Drawable bgOn;
+    private Drawable bgOff;
 
     public Toggle(Context context) {
         super(context);
@@ -24,25 +27,24 @@ public class Toggle extends FrameLayout {
     }
 
     private void init() {
+        bgOn = getResources().getDrawable(R.drawable.toggle_bg_on, null);
+        bgOff = getResources().getDrawable(R.drawable.toggle_bg_off, null);
+
         LayoutInflater.from(getContext()).inflate(R.layout.ui_toggle, this, true);
         thumb = findViewById(R.id.thumb);
 
-        setBackgroundResource(R.drawable.toggle_bg_off);
+        setBackground(bgOff);
 
         getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 if (!isInitialized && getWidth() > 0 && thumb != null && thumb.getWidth() > 0) {
-                    maxTranslationX = getWidth() - thumb.getWidth();
+                    int padding = getPaddingStart() + getPaddingEnd();
+                    maxTranslationX = getWidth() - thumb.getWidth() - padding;
                     isInitialized = true;
-
                     applyThumbPosition();
 
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                        getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    } else {
-                        getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                    }
+                    getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
             }
         });
@@ -56,7 +58,7 @@ public class Toggle extends FrameLayout {
     }
 
     private void applyState() {
-        setBackgroundResource(isChecked ? R.drawable.toggle_bg_on : R.drawable.toggle_bg_off);
+        setBackground(isChecked ? bgOn : bgOff);
 
         if (isInitialized) {
             applyThumbPosition();

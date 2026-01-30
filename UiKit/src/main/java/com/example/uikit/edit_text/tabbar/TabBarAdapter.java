@@ -27,6 +27,16 @@ public class TabBarAdapter extends RecyclerView.Adapter<TabBarAdapter.ViewHolder
 
     public OnTabClickListner Listner;
 
+    public void setActive(int position) {
+        if (SelectPosition == position) return;
+
+        int oldPosition = SelectPosition;
+        SelectPosition = position;
+
+        notifyItemChanged(oldPosition);
+        notifyItemChanged(SelectPosition);
+    }
+
     public interface OnTabClickListner{
         void  OnTabClick(int position);
     }
@@ -84,5 +94,8 @@ public class TabBarAdapter extends RecyclerView.Adapter<TabBarAdapter.ViewHolder
             Title = itemView.findViewById(R.id.textView);
             Parent = (LinearLayout) Image.getParent();
         }
+
+
+
     }
 }
