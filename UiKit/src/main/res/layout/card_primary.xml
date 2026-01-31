@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:clipToOutline="true">
 
     <TextView
         android:id="@+id/tvName"
@@ -33,6 +35,8 @@
                 android:text="Мужская одежда"/>
 
             <TextView
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
                 android:layout_width="match_parent"
                 android:id="@+id/tvPrice"
                 style="@style/Typography.Matule.Title3.Semibold"

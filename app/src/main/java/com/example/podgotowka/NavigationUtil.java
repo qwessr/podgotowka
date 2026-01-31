@@ -23,7 +23,7 @@ public class NavigationUtil {
                     intent = new Intent(activity, Catalog.class);
                     break;
                 case 2:
-                    // intent = new Intent(activity, Projects.class);
+                    intent = new Intent(activity, Project.class);
                     break;
                 case 3:
                     intent = new Intent(activity, Profile.class);

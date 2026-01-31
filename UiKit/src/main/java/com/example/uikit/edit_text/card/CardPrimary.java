@@ -38,9 +38,6 @@ public class CardPrimary extends CardCustom {
     }
 
     public void init(Item item) {
-        if (Frame != null) {
-            Frame.removeAllViews();
-        }
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.card_primary, Frame, false);
 
@@ -48,6 +45,7 @@ public class CardPrimary extends CardCustom {
         tvName = view.findViewById(R.id.tvName);
         tvCategory = view.findViewById(R.id.tvCategory);
         tvPrice = view.findViewById(R.id.tvPrice);
+
 
         BthSmall.init(0);
         BthSmall.init("Добавить", BthCustom.TypeButton.PRIMAPRY);

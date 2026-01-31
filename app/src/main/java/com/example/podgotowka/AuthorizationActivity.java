@@ -23,10 +23,6 @@ public class AuthorizationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization);
 
-
-
-
-
         /// 1. Поле Email
         etDefault etDefault1 = findViewById(R.id.etDefault1);
         if (etDefault1 != null) {

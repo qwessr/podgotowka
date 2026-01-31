@@ -79,11 +79,10 @@ public class Main extends AppCompatActivity {
         rvProjects.setLayoutManager(new LinearLayoutManager(this));
         rvProjects.setAdapter(adapter);
 
-        rvProjects.addItemDecoration(new androidx.recyclerview.widget.DividerItemDecoration(this, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL) {
+        rvProjects.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(android.graphics.Rect outRect, android.view.View view, RecyclerView parent, RecyclerView.State state) {
-                super.getItemOffsets(outRect, view, parent, state);
-                outRect.bottom = 16;
+                outRect.bottom = 40;
             }
         });
     }
