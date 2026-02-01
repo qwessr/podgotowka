@@ -1,10 +1,17 @@
 package com.example.podgotowka;
 
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.uikit.edit_text.card.CardPrimary;
+
 import com.example.uikit.edit_text.common.Item;
+import com.example.uikit.edit_text.Button.BthSmall;
+import com.example.uikit.edit_text.Button.BthCustom;
+import com.example.uikit.R;
+
 import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
@@ -17,17 +24,37 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        CardPrimary card = new CardPrimary(parent.getContext(), null, 0);
-        card.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-        return new ViewHolder(card);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_primary, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.card.init(items.get(position));
+        Item element = items.get(position);
+
+        holder.tvName.setText(element.Name);
+        holder.tvCategory.setText(element.Category);
+        holder.tvPrice.setText(element.Price + " Р");
+
+        holder.bthSmall.init(0);
+
+        updateButtonState(holder.bthSmall, element.isAdded);
+
+        if (holder.bthSmall.Bth != null) {
+            holder.bthSmall.Bth.setOnClickListener(v -> {
+                element.isAdded = !element.isAdded;
+                updateButtonState(holder.bthSmall, element.isAdded);
+            });
+        }
+    }
+
+    private void updateButtonState(BthSmall btn, boolean isAdded) {
+        if (isAdded) {
+            btn.init("Убрать", BthCustom.TypeButton.SECONDARY);
+        } else {
+            btn.init("Добавить", BthCustom.TypeButton.PRIMAPRY);
+        }
     }
 
     @Override
@@ -36,11 +63,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        CardPrimary card;
+        TextView tvName, tvPrice, tvCategory;
+        BthSmall bthSmall;
 
-        ViewHolder(CardPrimary card) {
-            super(card);
-            this.card = card;
+        ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            tvCategory = itemView.findViewById(R.id.tvCategory);
+            bthSmall = itemView.findViewById(R.id.bthSmall);
         }
     }
 }
