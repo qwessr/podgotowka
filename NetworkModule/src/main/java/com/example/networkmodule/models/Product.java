@@ -5,5 +5,8 @@ public class Product {
     public String description;
     public  Integer gender;
     public String  expenditure;
+
+    public Integer price;
+
     public String img;
 }

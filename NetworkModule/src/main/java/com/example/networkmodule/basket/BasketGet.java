@@ -26,7 +26,7 @@ public class BasketGet extends MyAsynckTask {
 
 
         try {
-            Connection.Response response = Jsoup.connect(Settings.Url + "user/logout")
+            Connection.Response response = Jsoup.connect(Settings.Url + "user/get")
                     .ignoreContentType(true)
                     .ignoreHttpErrors(true)
                     .method(Connection.Method.GET)

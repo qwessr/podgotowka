@@ -11,36 +11,32 @@ import org.jsoup.Jsoup;
 import java.io.IOException;
 
 public class UserGet extends MyAsynckTask {
+    public String token;
 
-    String token;
-    public UserGet(String token ,CheckInternet checkInternet, MyResponseCallback callback) {
+    public UserGet(String token, CheckInternet checkInternet, MyResponseCallback callback) {
         super(checkInternet, callback);
-
         this.token = token;
     }
 
     @Override
-    protected String doInBackground(Void... voids)
-    {
-        if(!checkInternet.isWiFiConnection() && !checkInternet.isMobileConnection())
+    protected String doInBackground(Void... voids) {
+        if (!checkInternet.isInternet())
             return "Error : no internet connection";
-        try{
-            Connection.Response response = Jsoup.connect(Settings.Url + "users/get")
+
+        try {
+            Connection.Response response = Jsoup.connect(Settings.Url + "user/get")
                     .ignoreContentType(true)
                     .ignoreHttpErrors(true)
                     .method(Connection.Method.GET)
-                    .header("token",token)
+                    .header("token", token)
                     .execute();
 
-            if(response.statusCode()==200)
+            if (response.statusCode() == 200)
                 return response.body();
             else
-                return "Error "+response.body();
+                return "Error: " + response.body();
+        } catch (IOException e) {
+            return "Error: " + e.getMessage();
         }
-        catch (IOException e)
-        {
-            return "Error "+ e.getMessage();
-        }
-
     }
 }

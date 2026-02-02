@@ -26,4 +26,8 @@ public class CheckInternet {
         NetworkInfo MobileNetwork = Manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         return MobileNetwork != null && MobileNetwork.isConnected();
     }
+
+    public boolean isInternet() {
+        return isWiFiConnection() || isMobileConnection();
+    }
 }

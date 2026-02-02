@@ -11,35 +11,35 @@ import org.jsoup.Jsoup;
 import java.io.IOException;
 
 public class ProductSearch extends MyAsynckTask {
-    String text;
-    public ProductSearch(String text, CheckInternet checkInternet, MyResponseCallback callback) {
-        super(checkInternet, callback);
+    public String search;
+    public String token;
 
-        this.text = text;
+    public ProductSearch(String search, String token, CheckInternet checkInternet, MyResponseCallback callback) {
+        super(checkInternet, callback);
+        this.search = search;
+        this.token = token;
     }
 
     @Override
-    protected String doInBackground(Void...voids)
-    {
-        if(!checkInternet.isWiFiConnection() && !checkInternet.isMobileConnection())
-            return  "Error : no internet connection";
-
+    protected String doInBackground(Void... voids) {
+        if (!checkInternet.isInternet())
+            return "Error : no internet connection";
 
         try {
-            Connection.Response response = Jsoup.connect(Settings.Url + "product/search?search="+this.text)
+            Connection.Response response = Jsoup.connect(Settings.Url + "product/search")
                     .ignoreContentType(true)
                     .ignoreHttpErrors(true)
+                    .data("search", search)
                     .method(Connection.Method.GET)
+                    .header("token", token)
                     .execute();
 
             if (response.statusCode() == 200)
                 return response.body();
             else
                 return "Error: " + response.body();
-        }
-        catch (IOException e)
-        {
-            return "Error: "+e.getMessage();
+        } catch (IOException e) {
+            return "Error: " + e.getMessage();
         }
     }
 }

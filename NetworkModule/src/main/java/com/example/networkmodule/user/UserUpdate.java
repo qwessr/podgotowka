@@ -30,6 +30,7 @@ public class UserUpdate extends MyAsynckTask {
     {
         if(!checkInternet.isWiFiConnection() && !checkInternet.isMobileConnection())
             return  "Error : no internet connection";
+
         Map<String, String> params = new HashMap<>();
         params.put("Email",user.email);
         params.put("Password",user.password);
@@ -41,7 +42,7 @@ public class UserUpdate extends MyAsynckTask {
 
 
         try {
-            Connection.Response response = Jsoup.connect(Settings.Url + "user/logout")
+            Connection.Response response = Jsoup.connect(Settings.Url + "user/update")
                     .ignoreContentType(true)
                     .ignoreHttpErrors(true)
                     .method(Connection.Method.PUT)
