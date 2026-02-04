@@ -1,4 +1,4 @@
-package com.example.podgotowka;
+package com.example.uikit;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.uikit.edit_text.common.Item;
 import com.example.uikit.edit_text.Button.BthSmall;
 import com.example.uikit.edit_text.Button.BthCustom;
-import com.example.uikit.R;
 
 import java.util.List;
 

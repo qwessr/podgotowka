@@ -1,4 +1,4 @@
-package com.example.podgotowka;
+package com.example.uikit;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,13 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+import com.example.uikit.edit_text.common.Item;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 
-import com.example.networkmodule.common.CheckInternet;
-import com.example.networkmodule.common.MyResponseCallback;
-import com.example.networkmodule.user.UserLogin;
 import com.example.uikit.edit_text.BottomSheet.CustomBottomSheet;
 import com.example.uikit.edit_text.Button.BthBig;
 import com.example.uikit.edit_text.Button.BthBubbleBack;
@@ -178,6 +175,16 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("Notify", "Click Back Button");
                 });
             }
+        }
+
+
+        // Инициализация CardPrimary для теста
+        com.example.uikit.edit_text.card.CardPrimary cardPrimary = findViewById(R.id.cardPrimaryTest);
+        if (cardPrimary != null) {
+            // Создаем объект Item, так как метод init принимает именно его
+            // Конструктор: Item(String name, String category, Integer price)
+            Item item = new Item("Название товара", "Категория", 1000);
+            cardPrimary.init(item);
         }
     }
 }

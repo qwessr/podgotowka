@@ -15,6 +15,7 @@ navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
 activity = "1.10.0"
 junitJunit = "4.12"
+rules = "1.7.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -38,6 +39,7 @@ navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fr
 navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
+rules = { group = "androidx.test", name = "rules", version.ref = "rules" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

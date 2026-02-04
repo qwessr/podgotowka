@@ -17,6 +17,20 @@ public class CardPrimary extends CardCustom {
     TextView tvName, tvCategory, tvPrice;
     boolean Basket = false;
 
+    public enum Status {
+        ADD, DELETE
+    }
+
+    public void setStatus(Status status) {
+        if (BthSmall != null) {
+            if (status == Status.ADD) {
+                BthSmall.init("Добавить", BthCustom.TypeButton.PRIMAPRY);
+            } else {
+                BthSmall.init("Убрать", BthCustom.TypeButton.SECONDARY);
+            }
+        }
+    }
+
     public CardPrimary(@NonNull Context context) {
         super(context);
         init();

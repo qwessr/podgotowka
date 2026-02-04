@@ -65,5 +65,7 @@ public class TabBarCustom extends ConstraintLayout {
         if (Adapter == null) return;
         Adapter.setActive(position);
     }
+    
+
 
 }

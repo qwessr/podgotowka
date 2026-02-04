@@ -1,4 +1,4 @@
-package com.example.podgotowka;
+package com.example.uikit;
 
 import android.app.Activity;
 import android.content.Intent;

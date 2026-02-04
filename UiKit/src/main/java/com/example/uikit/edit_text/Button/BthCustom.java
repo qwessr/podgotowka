@@ -36,9 +36,9 @@ public class BthCustom extends ConstraintLayout {
 
 
     public void init(Integer idLayout){
-        if (idLayout==null|| idLayout == 0) return;
+        if (idLayout == null || idLayout == 0) return;
         this.removeAllViews();
-        LayoutInflater.from(this.getContext()).inflate(idLayout,this,true);
+        LayoutInflater.from(this.getContext()).inflate(idLayout, this, true);
         Bth = findViewById(R.id.bth);
     }
 
@@ -67,6 +67,7 @@ public class BthCustom extends ConstraintLayout {
             this.setEnabled(false);
         }
     }
+
 
 
     public void setEnabled(boolean enabled)

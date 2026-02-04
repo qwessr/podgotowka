@@ -34,6 +34,7 @@ dependencies {
     implementation "androidx.core:core-splashscreen:1.0.1"
 
 
+
     implementation libs.appcompat
     implementation libs.material
     implementation libs.lifecycle.runtime.ktx
@@ -44,11 +45,14 @@ dependencies {
     implementation libs.ui.tooling.preview
     implementation libs.material3
     implementation libs.filament.android
+    implementation libs.rules
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation platform(libs.compose.bom)
     androidTestImplementation libs.ui.test.junit4
+    androidTestImplementation project(':app')
+    androidTestImplementation project(':app')
     debugImplementation libs.ui.tooling
     debugImplementation libs.ui.test.manifest
 }
